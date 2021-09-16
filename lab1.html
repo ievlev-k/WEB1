@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <table class="table_main" >
+        <tr >
+            <th colspan="2" class="header_th">
+                <p class="header_title">
+                    Иевлев Кирилл, Группа: P3233, Вариант:33008
+                </p>
+            </th>
+        </tr>
+        <tr>
+            <td class="main-graph">
+                <form>
+                    <img src="img/рис1.png" alt="picture" class="main-graph_pic">
+                    <p class="main-graph_title">Изменения X: (-3...3)</p>
+                    <input class="main-graph_parameters" maxlength="15" type="text" name = "x" id="x" placeholder="Введите X" size ="18" required>
+
+                    <p class="main-graph_title">Изменения Y: (-5...5)</p>
+                    <input class="main-graph_parameters" maxlength="15" type="text" name = "y" id="y" placeholder="Введите Y" size ="18" required>
+
+                    <p class="main-graph_title">Изменения R: (2...5)</p>
+                    <input class="main-graph_parameters" maxlength="15" type="text" name = "r" id="r" placeholder="Введите R" size ="18" required>
+                    <p  id="title"> </p>
+
+                    <input type="button" class="main-graph_button_res" value="Ввести"  id = "input">
+                    <input type="button" class="main-graph_button_sub" value="Отчистить таблицу" id = "clean">
+
+
+
+                </form>
+            </td>
+            <td class="main-table">
+
+                <table class="main-table_results" >
+                    <tbody id="tableBody">
+                    <tr >
+                        <th >X</th>
+                        <th>Y</th>
+                        <th >R</th>
+                        <th >Попадание</th>
+                        <th >Время выполнения (мкс)</th>
+                        <th >Время запроса</th>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="jc/main.js" type="text/javascript"></script>
+    <script src="jc/jquery.js" type="text/javascript"></script>
+</body>
+</html>
