@@ -27,76 +27,84 @@ function correctImport(){
     }else {$("#title").text("");}
     return importCorrect;
 }
-document.querySelector("#input").onclick = function(e){
-    e.preventDefault();
-    let correct = correctImport();
-    if (correct ){
-        $.ajax({
+
+
+document.addEventListener('DOMContentLoaded', function(){
+    $('[data-input]').on('click', function (e){
+            e.preventDefault();
+
+            let correct = correctImport();
+
+            if (correct ){
+
+                $.ajax({
+                        url: "printTable.php",
+                        async: true,
+                        type: "POST",
+                        data: {
+                            "x": x.value,
+                            "y": y.value,
+                            "r": r.value
+                        },
+
+                        success: function(printTable) {
+
+                            tableBody.insertAdjacentHTML('beforeend', printTable);
+                        },
+
+                    }
+
+                );
+            }
+    }
+
+
+
+    )
+
+
+
+})
+
+
+document.addEventListener('DOMContentLoaded', function(){
+    $('[data-cleangs]').on('click', function (e){
+            e.preventDefault();
+
+
+
+            $.ajax({
                 method: "POST",
                 async:true,
-                url: "printTable.php",
-                data: {
-                    "x": x.value,
-                    "y": y.value,
-                    "r": r.value},
+                url: "cleaning.php",
+                data:{},
+                success:function (){
+                    tableBody.innerHTML = `
+                    <tr>
+                        <th >X</th>
+                        <th>Y</th>
+                        <th >R</th>
+                        <th >Попадание</th>
+                        <th >Время выполнения (мкс)</th>
+                        <th >Время запроса</th>
+                    </tr>
+                    `
 
-                success: function(printTable) {
-
-                    tableBody.insertAdjacentHTML('beforeend', printTable);
                 },
 
-            }
-
-        );
-    }
-
-};
-
-document.querySelector("#clean").onclick = function(e){
-    e.preventDefault();
-    $.ajax({
-            method: "POST",
-            async:true,
-            url: "cleaning.php",
-            data:{},
-            success:function (){
-                tableBody.innerHTML = `
-                <tr>
-                    <th >X</th>
-                    <th>Y</th>
-                    <th >R</th>
-                    <th >Попадание</th>
-                    <th >Время выполнения (мкс)</th>
-                    <th >Время запроса</th>
-                </tr>
-                `
-
-            },
-
-    }
-
-        );
+            })
+        }
 
 
-};
-// document.onreadystatechange = function (){
-//     if (document.readyState === 'complete'){
-//         $.ajax({
-//             url: "write.php",
-//             method: "POST",
-//             async:true,
-//
-//
-//             success:function (printTable){
-//
-//                 tableBody.insertAdjacentHTML('beforeend', printTable)
-//
-//             },
-//
-//         })
-//
-//     }
-// }
+
+    )
+
+
+
+})
+
+
+
 
 document.addEventListener('DOMContentLoaded', function(){
     $.ajax({
@@ -111,9 +119,3 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 }, false);
-
-
-
-
-
-
